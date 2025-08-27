@@ -1,0 +1,18 @@
+{% extends "tienda/base.html"%}
+
+{% block title %} Inicio {% endblock %} 
+
+{% block content %} 
+<h1>Bienvenidos</h1>
+<ul>
+    {% for p in productos %} 
+    <li>
+        <a href="{% url 'tienda:detalle_producto' p.pk %} ">
+            {{ p.nombre }} - ${{p.precio|floatformat:0}}
+        </a>
+    </li>
+    {% empty %} 
+    <li> NO hay productos disponibles. </li>
+    {% endfor %} 
+</ul>
+{% endblock %} 
